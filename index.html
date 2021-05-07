@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Document</title>
+          <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+          <div class="container">
+                    <div class="video__container">
+                              <video class="video"
+                                        src="./video/CR7 Cristiano Ronaldo _ My Fragrance Your Game advert.mp4"></video>
+                              <div class="controls">
+                                        <div class="orange-bar">
+                                                  <div class="orange__juice"></div>
+                                        </div>
+                                        <div class="button">
+                                                  <button id="play-pause">></button>
+                                        </div>
+                              </div>
+                    </div>
+          </div>
+
+          <script src="./main.js"></script>
+
+          <script>
+                    const video = document.querySelector('.video')
+                    const orange__juice = document.querySelector('.orange__juice')
+                    const button = document.getElementById('play-pause')
+
+
+                    function playpause() {
+                              if (video.paused) {
+                                        video.play()
+                                        button.innerText = 'II'
+                                        button.style.fontWeight = 'bolder'
+                                        button.style.fontSize = '20px'
+                                        button.style.letterSpacing = '2px'
+                                        button.style.paddingLeft = '2px'
+                              }
+                              else {
+                                        button.innerText = '>'
+                                        button.style.letterSpacing = '0px'
+                                        button.style.paddingLeft = '0px'
+                                        video.pause()
+                              }
+                    }
+
+                    button.onclick = function () {
+                              playpause()
+                    }
+
+                    video.addEventListener('timeupdate', () => {
+
+                              const juicepos = video.currentTime / video.duration
+                              console.log(juicepos * 100 + '%')
+
+                              orange__juice.style.width = juicepos * 100 + '%'
+                    })
+
+          </script>
+</body>
+
+</html>
